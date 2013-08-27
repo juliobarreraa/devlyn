@@ -1,0 +1,4 @@
+*.php ident
+*.php filter=dater
+*.php filter=rcs-keywords
+*.js filter=rcs-keywords
