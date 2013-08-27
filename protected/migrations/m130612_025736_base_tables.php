@@ -65,6 +65,12 @@ class m130612_025736_base_tables extends CDbMigration
 			'curriculum' =>  'varchar(100) CHARACTER SET utf8 DEFAULT NULL',
 			'biography' =>  'text CHARACTER SET utf8 DEFAULT NULL',
 			'extra_info' =>  'text CHARACTER SET utf8',
+            'employee_number' =>  'int(10) DEFAULT NULL',
+            'branch_office' =>  'int(10) DEFAULT NULL',
+            'department'  => 'varchar(50) DEFAULT NULL',
+            'region'  => 'varchar(30) DEFAULT NULL',
+            'team'  => 'int(10) DEFAULT NULL',
+            'leader'  => 'tinyint(1) DEFAULT NULL',
 			"UNIQUE KEY member_id (member_id)",
         ), 'ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1' );
 
