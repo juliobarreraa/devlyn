@@ -59,10 +59,9 @@
 			};
 		', CClientScript::POS_BEGIN); ?>
 		<?php Yii::app()->clientScript->registerScript('load_socket_io', "
-			if(typeof io != 'undefined')
+			if(typeof io != 'undefined') {
 				var socket = io.connect('//" . Yii::app()->request->serverName . ":4000');
-			else 
-				alert(gcms.lang.socket_not_defined);
+			}
 "
 , CClientScript::POS_BEGIN); ?>
 

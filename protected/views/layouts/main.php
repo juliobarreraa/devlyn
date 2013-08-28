@@ -37,40 +37,39 @@
     }
 EOF
 ,CClientScript::POS_BEGIN); ?>
-    <?php Yii::app()->getClientScript()->registerScript('scrollbar', <<<EOF
-      $.history.listen()
-        $('#nav .nav .scroll').click(function() {
-      	$.history.push('<?php echo CHtml::normalizeUrl(array('/')) ?>' + $(this).attr('href')); 
-      });
-EOF
-); ?>
-    <?php Yii::app()->getClientScript()->registerScriptFile(Yii::app()->baseUrl . '/js/main.min.js', CClientScript::POS_END) ?>
-
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
   <!-- activate scrollspy -->
-  <body id="top" data-spy="scroll" data-target=".navbar" data-offset="50">
-
-       <!-- Nav button -->
-      <a id="toggle"  class="closed">
-        <i class="icon-reorder"></i>
-      </a>
+  <body>
 
       <!-- Navigation -->
+      <!-- .inner-page header -->
+      <nav class="inner-page" id="header-nav">
+        <ul>
+          <li><a href="#" class="active"><?php echo Yii::t('general', 'Home'); ?></a></li>
+          <li><a href="#"><?php echo Yii::t('general', 'Instrucciones'); ?></a></li>
+          <li><a href="#"><?php echo Yii::t('general', 'Galería'); ?></a></li>
+          <li><a href="#"><?php echo Yii::t('general', 'Ingresar respuesta'); ?></a></li>
+          <?php if (Yii::app()->user->isGuest): ?>
+          <li><a href="<?php echo CHtml::normalizeUrl(array("site/login")) ?>"><?php echo Yii::t('general', 'Identificarse'); ?></a></li>
+          <?php else: ?>
+          <li><a href="<?php echo CHtml::normalizeUrl(array("site/logout")) ?>"><?php echo Yii::t('general', 'Cerrar sesión'); ?></a></li>
+          <?php endif ?>
+        </ul>
+      </nav>
+      <!-- /.inner header -->
 
-        <div class="inner-page header"></div> 
       <div class="content-page">
-        
+        <?php echo $content ?>
       </div>
 
       <!-- The footer, social media icons, and copyright -->        
       <footer class="page color-5">
         <div class="inner-page row-fluid footer">
            <div class="logo-dev"></div>
-          <div>2013 ÓPTICAS DEVLYN, S.A. DE C.V. // WEBSITE ENGELPLANET //</div>
+          <div><?php echo Yii::t('general', '{{year}} ÓPTICAS DEVLYN, S.A. DE C.V. // WEBSITE ENGELPLANET //', array('{{year}}' => date('Y'))); ?></div>
         </div>
       </footer>
 	</body>
