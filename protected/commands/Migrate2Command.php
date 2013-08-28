@@ -26,17 +26,13 @@
 class Migrate2Command extends CConsoleCommand
 {
 	/**
+	 * @constant(Start_Members_profile)
+	 */
+	const Start_Member_Profile = 0;
+	/**
 	 * @constant(Start_Members)
 	 */
-	const Start_Members = 0;
-	/**
-	 * @constant(Start_Forums)
-	 */
-	const Start_Forums = 1;
-	/**
-	 * @constant(Start_Topics)
-	 */
-	const Start_Topics=2;
+	const Start_Members = 1;
 
 	/**
 	 * Realiza la migración del esquema de datos de invision power board a globalcms
@@ -46,25 +42,22 @@ class Migrate2Command extends CConsoleCommand
 	public function actionIndex($complete = 0) {
 
 		switch($complete ) {
-			case self::Start_Members:
+			case self::Start_Member:
 				print "Importación de usuarios\n";
 
 				/**
 				 * 0. Reiniciamos las tablas de datos para instalar los nuevos usuarios de la aplicación.
 				 */
-				Yii::app()->db->createCommand( "DELETE FROM `{{member_profile}}` WHERE 1" )->execute();
-				Yii::app()->db->createCommand( "DELETE FROM `{{members}}` WHERE 1" )->execute();
+				//Yii::app()->db->createCommand( "DELETE FROM {{member_profile}} WHERE 1" )->execute();
+				//Yii::app()->db->createCommand( "DELETE FROM {{members}} WHERE 1" )->execute();
 
 				/**
 				 * 1. Comenzamos migración de usuarios
 				 */
 				Yii::app()->migrate2new->active = true;
-
-				//Usuarios antiguo esquema.
-				$command = Yii::app()->migrate2new->createCommand( "SELECT m.id, m.name, m.email, m.mgroup, m.members_l_username, m.joined, m.last_activity, m.ip_address, mc.converge_pass_hash, mc.converge_pass_salt, me.avatar_location, me.bio
-																	FROM `{{members}}` m
-																	INNER JOIN `{{members_converge}}` mc ON m.id = mc.converge_id
-																	INNER JOIN `{{member_extra}}` me ON m.id = me.id" );
+				
+				//Usuarios antiguo esquema BD empleados.
+				$command = Yii::app()->migrate2new->createCommand("SELECT s.id, s.employee_number, s.name, s.branch_office, s.department, s.region, s.team, s.leader FROM {{sucursales}} s");
 
 				$rows = $command->queryAll();
 
@@ -75,63 +68,40 @@ class Migrate2Command extends CConsoleCommand
 				/** @type array $row */
 				foreach($rows as $row) {
 					if(Members::create($row)) {
+						print "Usuario {$row['employee_number']} - {$row['name']} importado exitosamente\n";
+					}
+					else {
+						print "Ocurrio un error con el registro: {$row['id']}\n";
+					}//echo "termino";exit;
+				}
+
+			case self::Start_Members:
+				print "creación de contraseñas\n";
+
+				/**
+				 * 1. Comenzamos a crear las contraseñas
+				 */
+				Yii::app()->migrate2new->active = true;
+
+				//Creamos la contraseña.
+				$command = Yii::app()->migrate2new->createCommand( "SELECT id, employee_number, name, CONCAT(employee_number, name) password FROM sucursales"); 
+				preg_match("/^[\d+\w+]/", $passwordgenerada, $match);
+				//Inseramos la nueva contraseña.
+				
+
+				$rows = $command->queryAll();
+
+				//Dejamos inactiva la conexiÃ³n migrate2new para poder usar la conexiÃ³n principal hacia nuestra base de datos.
+				Yii::app()->migrate2new->active = false;
+
+				//Insertamos los datos en el nuevo modelo.
+				/** @type array $row */
+				foreach($rows as $row) {
+					if(Members::create($row)) {
 						print "Usuario {$row['id']} - {$row['name']} importado exitosamente\n";
 					}
 					else {
 						print "Ocurrio un error con el registro: {$row['id']}\n";
-					}
-				}
-			case self::Start_Forums:
-				/**
-				 * 2. Comienza la migración de los foros
-				 */
-				
-				print "Importación de foros\n";
-				
-				//Reseteamos la tabla de foros.
-				Yii::app()->db->createCommand( "DELETE FROM `{{forums}}` WHERE 1" )->execute();
-
-				Yii::app()->migrate2new->active = true; //Activamos la conexión
-
-				$command = Yii::app()->migrate2new->createCommand( "SELECT id, last_poster_id, name, description, position, password, last_id, show_rules, parent_id, rules_title, rules_text, status FROM `{{forums}}` f" );
-				$rows = $command->queryAll();
-
-				//Dejamos inactiva la conexión migrate2new para poder usar la conexión principal hacia nuestra base de datos.
-				Yii::app()->migrate2new->active = false;
-
-				/** @type array $row */
-				foreach($rows as $row) {
-					if(Forums::create($row)) {
-						print "Foro {$row['id']} - {$row['name']} importado exitosamente\n";
-					}
-					else {
-						print "Ocurrio un error con el registro: {$row['id']}\n";
-					}
-				}
-			case self::Start_Topics:
-				/**
-				 * 3. Comienza la migración de los Topics
-				 */
-				print "Importacion de Topics";
-
-				//Reseteamos la tabla de topics
-				Yii::app()->db->createCommand("DELETE FROM {{topics}} WHERE 1")->execute();
-				Yii::app()->migrate2new->active = true; //Activamos la conexión a migrate2new
-
-				$command =Yii::app()->migrate2new->createCommand("SELECT * FROM `{{topics}}` t
-																		   INNER JOIN `{{posts}}` p ON t.topic_firstpost = p.pid");
-				$rows = $command->queryAll();
-
-				//Dejamos inactiva la conexión migrate2new para poder usar la conexión principal hacia nuestra base de datos.
-				Yii::app()->migrate2new->active = false;
-
-				/** @type array $row */
-				foreach($rows as $row){
-					if (Topics::create($row)) {
-						print "Topic {$row['tid']} - {$row['title']} importado exitosamente\n";
-					}
-					else {
-						print "Ocurrio un error con el registro: {$row['tid']}\n";
 					}
 				}
 			break;

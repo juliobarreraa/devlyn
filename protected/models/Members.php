@@ -299,7 +299,6 @@ class Members extends CActiveRecord
 				$this->globalScenario();
 				break;
 			case 'migrate':
-				break;
 			default:
 				$this->globalScenario();
 		}
@@ -676,21 +675,19 @@ class Members extends CActiveRecord
 		/**
 		 * Verificamos que el arreglo row contenga todas las claves necesarias para la importación
 		 */
-		if(!Helpers::array_multi_key_exists('id|name|email|members_l_username|converge_pass_hash|converge_pass_salt|joined|last_activity|ip_address', $row)) {
+		if(!Helpers::array_multi_key_exists('id|name|employee_number', $row)) {
 			return false;
 		}
 
 		//Configuración de atributos
 		$member->id = $row['id'];
 		$member->name = $row['name'];
-		$member->email = $row['email'];
-		$member->username = $row['members_l_username'];
-		$member->pass_hash = $row['converge_pass_hash'];
-		$member->pass_salt = $row['converge_pass_salt'];
-		$member->created_at = $row['joined'];
-		$member->last_login_time = $row['last_activity'];
-		$member->ip_address = $row['ip_address'];
+		$member->email = "todo" . time() . "@cambiarmail.com";
+		$member->password = $row["employee_number"];
+		$member->username = $row['employee_number'];
 		$member->nationality = self::NATIONALITY_MEXICAN;
+
+		sleep(1);
 
 		$transaction = null;
 
@@ -698,6 +695,7 @@ class Members extends CActiveRecord
 			//Si se guardo el usuario satisfactoriamente, entonces creamos su perfil con datos extras.
 			if($member->save()) {
 
+/*
 				$transaction = $member->dbConnection->beginTransaction(); 
 				if(Helpers::array_multi_key_exists('avatar_location|bio', $row)) {
 					$memberProfile = new MemberProfile;
@@ -724,9 +722,10 @@ class Members extends CActiveRecord
 					}
 
 					Yii::app()->authManager->assign($role, $member->id);
-				}
+				}*/
 			}
 			else {
+				//var_dump($member->getErrors());exit;
 				return false;
 			}
 		} catch (Exception $e) {
