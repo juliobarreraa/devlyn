@@ -44,6 +44,7 @@ EOF
 	<div class="row-fluid">
 		<div class="span12">
 			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModules.members', 'Usuarios') ?></h3>
+				
 			<table id="table_report" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
@@ -78,7 +79,7 @@ EOF
 						</td>
 
 						<td>
-							<a href="#"><?php echo $value->name ?></a>
+							<a href="<?php echo CHtml::normalizeURl(array('members/view','id' => $value->id)) ?>"><?php echo $value->name ?></a>
 						</td>
 						<td><?php echo $value->email ?></td>
 						<td class="hidden-480"><?php echo date('Y-m-d', $value->created_at) ?></td>
