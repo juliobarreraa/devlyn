@@ -22,6 +22,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
 
     <!-- Le styles -->
+    <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/bootstrap.min.css') ?> 
     <?php Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/style.css') ?> 
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -47,17 +48,28 @@ EOF
       <!-- Navigation -->
       <!-- .inner-page header -->
       <nav class="inner-page" id="header-nav">
+        <?php if (!Yii::app()->user->isGuest): ?>
         <ul>
           <li><a href="#" class="active"><?php echo Yii::t('general', 'Home'); ?></a></li>
           <li><a href="#"><?php echo Yii::t('general', 'Instrucciones'); ?></a></li>
           <li><a href="#"><?php echo Yii::t('general', 'Galería'); ?></a></li>
           <li><a href="#"><?php echo Yii::t('general', 'Ingresar respuesta'); ?></a></li>
-          <?php if (Yii::app()->user->isGuest): ?>
-          <li><a href="<?php echo CHtml::normalizeUrl(array("site/login")) ?>"><?php echo Yii::t('general', 'Identificarse'); ?></a></li>
-          <?php else: ?>
           <li><a href="<?php echo CHtml::normalizeUrl(array("site/logout")) ?>"><?php echo Yii::t('general', 'Cerrar sesión'); ?></a></li>
-          <?php endif ?>
         </ul>
+        <?php else: ?>
+        <?php $form=$this->beginWidget('CActiveForm', array(
+          'id'=>'login-form',
+          'enableAjaxValidation'=>false,
+          'htmlOptions' => array('class' => 'form-inline')
+        )); ?>
+        <?php echo $form->textField($this->controllerRenderHelper->getLoginForm(), 'username', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('username'), 'size' => '50')) ?>
+        <?php echo $form->textField($this->controllerRenderHelper->getLoginForm(), 'password', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('password'))) ?>
+        <button class="btn" type="submit">
+          <i class="icon-undo bigger-110"></i>
+          <?php echo Yii::t('general', 'Identificarse') ?>
+        </button>
+        <?php $this->endWidget(); ?>
+        <?php endif ?>
       </nav>
       <!-- /.inner header -->
 

@@ -91,7 +91,7 @@ class Migrate2Command extends CConsoleCommand
 
 				$rows = $command->queryAll();
 
-				//Dejamos inactiva la conexiÃ³n migrate2new para poder usar la conexiÃ³n principal hacia nuestra base de datos.
+				//Dejamos inactiva la conexión migrate2new para poder usar la conexiÃ³n principal hacia nuestra base de datos.
 				Yii::app()->migrate2new->active = false;
 
 				//Insertamos los datos en el nuevo modelo.

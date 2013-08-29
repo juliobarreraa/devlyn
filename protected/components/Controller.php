@@ -20,4 +20,25 @@ class Controller extends CController
 	 * for more details on how to specify this property.
 	 */
 	public $breadcrumbs=array();
+
+	/**
+	 * Helper para uso del controlador padre, layout principal
+	 * @var ControllerRenderHelper
+	 */
+	public $controllerRenderHelper;
+
+	/**
+	 * This method is invoked at the beginning of {@link render()}.
+	 * You may override this method to do some preprocessing when rendering a view.
+	 * @param string $view the view to be rendered
+	 * @return boolean whether the view should be rendered.
+	 * @since 1.1.5
+	 */
+	protected function beforeRender($view)
+	{
+		//Inicializamos
+		$this->controllerRenderHelper = new ControllerRenderHelper;
+
+		return parent::beforeRender($view);
+	}
 }
