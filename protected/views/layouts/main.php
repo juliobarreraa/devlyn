@@ -60,8 +60,15 @@ EOF
         <?php $form=$this->beginWidget('CActiveForm', array(
           'id'=>'login-form',
           'enableAjaxValidation'=>false,
+          'action' => CHtml::normalizeUrl(array('site/index')),
           'htmlOptions' => array('class' => 'form-inline')
         )); ?>
+        <?php if ($this->controllerRenderHelper->getLoginForm()->hasErrors()): ?>
+          <div class="alert alert-danger">
+            <strong><?php echo Yii::t('general', 'Ocurrió un error al identificarte, intenta nuevamente.'); ?></strong>
+          </div>
+        <?php endif ?>
+
         <?php echo $form->textField($this->controllerRenderHelper->getLoginForm(), 'username', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('username'), 'size' => '50')) ?>
         <?php echo $form->textField($this->controllerRenderHelper->getLoginForm(), 'password', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('password'))) ?>
         <button class="btn" type="submit">

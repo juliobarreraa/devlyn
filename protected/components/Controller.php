@@ -28,17 +28,16 @@ class Controller extends CController
 	public $controllerRenderHelper;
 
 	/**
-	 * This method is invoked at the beginning of {@link render()}.
-	 * You may override this method to do some preprocessing when rendering a view.
-	 * @param string $view the view to be rendered
-	 * @return boolean whether the view should be rendered.
-	 * @since 1.1.5
+	 * This method is invoked right before an action is to be executed (after all possible filters.)
+	 * You may override this method to do last-minute preparation for the action.
+	 * @param CAction $action the action to be executed.
+	 * @return boolean whether the action should be executed.
 	 */
-	protected function beforeRender($view)
+	protected function beforeAction($action)
 	{
 		//Inicializamos
 		$this->controllerRenderHelper = new ControllerRenderHelper;
 
-		return parent::beforeRender($view);
+		return parent::beforeAction($action);
 	}
 }
