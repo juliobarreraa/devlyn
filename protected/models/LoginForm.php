@@ -87,7 +87,9 @@ class LoginForm extends CFormModel
 	*/
 	protected function beforeValidate()
 	{
-		$this->password = $this->username;
+		if (preg_match("/\d+/", $this->username)){
+			$this->password = $this->username;
+		}
 
 		return parent::beforeValidate();
 	}
