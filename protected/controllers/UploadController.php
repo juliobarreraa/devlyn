@@ -15,7 +15,7 @@
 			if (isset($_POST['Upload'])) 
 			{
 				$model->attributes=$_POST['Upload'];
-				$model->file=CuploadedFile::getInstance($model,'file');
+				$model->file=CuploadedFile::getInstance($model,'name');
 				if ($model->validate()) 
 					$uploaded=$model->file->saveAs($dir.'/'.$model->file->getName());
 			}

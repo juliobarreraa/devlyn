@@ -9,7 +9,7 @@
 		public function rules()
 		{
 			return array(
-				array('file', 'file', 'types'=>'swf, jpg, png, gif'),
+				array('name', 'file', 'types'=>'swf, jpg, png, gif'),
 			);
 		}
 	}

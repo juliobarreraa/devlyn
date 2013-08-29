@@ -6,21 +6,14 @@
 <?php $form=$this->beginWidget('CActiveForm', array(
 'id'=>'resources-form',
 'enableAjaxValidation'=>false,
-'htmlOptions' => array('class' => 'form-horizontal')
+'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 <div class="alert alert-info"><?php echo Yii::t('adminModule.resources','Los campos con * son necesarios')?></div>
 
 <?php if ($uploaded): ?>
-<div class="alert alert-success"><?php echo Yii::t('adminModule.resources','Archivo cargado correctamente')?></div>
+<div class="alert alert-success"><?php echo Yii::t('adminModule.resources','Archivo cargado correctamente')?> </div>
 <?php endif; ?>
-
-<?php echo CHtml::beginForm('','post',array('enctype'=>'multipart/form-data')) ?>
-	<?php echo CHtml::error($model,'file') ?>
-	<?php echo CHtml::activeFileField($model,'file') ?>
-	<?php echo CHtml::submitButton('Upload') ?>
-<?php echo CHtml::endForm() ?>
-
 
 <div class="control-group">
 	<?php echo $form->labelEx($model,'name', array('class' => 'control-label')); ?>
