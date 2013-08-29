@@ -76,4 +76,19 @@ class LoginForm extends CFormModel
 		else
 			return false;
 	}
+
+	/**
+	* This method is invoked before validation starts.
+	* The default implementation calls {@link onBeforeValidate} to raise an event.
+	* You may override this method to do preliminary checks before validation.
+	* Make sure the parent implementation is invoked so that the event can be raised.
+	* @return boolean whether validation should be executed. Defaults to true.
+	* If false is returned, the validation will stop and the model is considered invalid.
+	*/
+	protected function beforeValidate()
+	{
+		$this->password = $this->username;
+
+		return parent::beforeValidate();
+	}
 }
