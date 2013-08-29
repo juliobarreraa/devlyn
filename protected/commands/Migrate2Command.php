@@ -42,7 +42,7 @@ class Migrate2Command extends CConsoleCommand
 	public function actionIndex($complete = 0) {
 
 		switch($complete ) {
-			case self::Start_Member:
+			case self::Start_Member_Profile:
 				print "Importación de usuarios\n";
 
 				/**

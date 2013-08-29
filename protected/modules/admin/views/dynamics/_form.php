@@ -2,6 +2,8 @@
 /* @var $this DynamicsController */
 /* @var $model Dynamics */
 /* @var $form CActiveForm */
+Yii::app()->clientScript->registerCssFile(Yii::app()->baseUrl . '/css/bootstrap-datetimepicker.min.css');
+Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstrap-datetimepicker.min.js', CClientScript::POS_END);
 ?>
 <?php $form=$this->beginWidget('CActiveForm', array(
 		'id'=>'dynamics-form',
@@ -52,18 +54,20 @@
 
 		</div>
 
-		<div class="control-group">
+		<div class="control-group input-append date" id="enabled_at_picker">
 			<?php echo $form->labelEx($model,'enabled_at', array('class' => 'control-label')); ?>
 
 			<div class="controls">
-				<?php echo $form->textField($model,'enabled_at',array('size'=>10,'maxlength'=>10)); ?>
+				<?php echo $form->textField($model,'enabled_at',array('size'=>10,'maxlength'=>10, 'data-format' => 'dd/MM/yyyy HH:mm:ss', 'autocomplete' => 'off')); ?>
+			    <span class="add-on">
+			      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+			    </span>
 				<?php if ($model->hasErrors('enabled_at')): ?>
 					<small class="text-error"><?php echo $form->error($model,'enabled_at'); ?></small>
 				<?php endif ?>
 			</div>
 
 		</div>
-		
 
 		<div class="form-actions">
 			<button class="btn btn-info" type="submit">
@@ -76,3 +80,12 @@
 				<?php echo Yii::t('forms', 'Reiniciar') ?>			</button>
 		</div>
 <?php $this->endWidget(); ?>
+
+
+<?php Yii::app()->clientScript->registerScript('calendar', <<<EOF
+    $('#enabled_at_picker').datetimepicker({
+      language: 'es',
+      format: 'dd/MM/yyyy HH:mm:ss'
+    });
+EOF
+)?>

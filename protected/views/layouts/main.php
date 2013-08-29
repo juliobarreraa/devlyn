@@ -70,7 +70,7 @@ EOF
         <?php endif ?>
 
         <?php echo $form->textField($this->controllerRenderHelper->getLoginForm(), 'username', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('username'), 'size' => '50')) ?>
-        <?php echo $form->textField($this->controllerRenderHelper->getLoginForm(), 'password', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('password'))) ?>
+        <?php echo $form->passwordField($this->controllerRenderHelper->getLoginForm(), 'password', array('placeholder' => $this->controllerRenderHelper->getLoginForm()->getAttributeLabel('password'))) ?>
         <button class="btn" type="submit">
           <i class="icon-undo bigger-110"></i>
           <?php echo Yii::t('general', 'Identificarse') ?>

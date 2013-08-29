@@ -3,12 +3,11 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	Yii::t('adminModule.Dynamics', 'Dynamics'),
+	Yii::t('adminModule.Dynamics', 'Dinámicas'),
 );
 
 $this->menu=array(
-	array('label'=>'Create Dynamics', 'url'=>array('create'),'thumb' => '_create'),
-	array('label'=>'Manage Dynamics', 'url'=>array('admin'), 'thumb' => '_manage'),
+	array('label'=>Yii::t('dynamics', 'Crear nueva dinámica'), 'url'=>array('create'),'thumb' => '_create'),
 );
 ?>
 
@@ -44,6 +43,7 @@ EOF
 	<div class="row-fluid">
 		<div class="span12">
 			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModule.Dynamics', 'Dynamics') ?></h3>
+			<?php echo CHtml::link(Yii::t('dynamics', 'Crear'), array('dynamics/create')) ?>
 			<table id="table_report" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
@@ -53,16 +53,11 @@ EOF
 								<span class="lbl"></span>
 							</label>
 						</th>
-																								<th><?php echo Yii::t('adminModule.Dynamics', 'id') ?></th>
-																		<th><?php echo Yii::t('adminModule.Dynamics', 'title') ?></th>
-																		<th><?php echo Yii::t('adminModule.Dynamics', 'content') ?></th>
-																		<th><?php echo Yii::t('adminModule.Dynamics', 'instructions_content') ?></th>
-																		<th><?php echo Yii::t('adminModule.Dynamics', 'answer') ?></th>
-													<?php /*
-						<th><?php echo Yii::t('adminModule.Dynamics', 'enabled_at') ?></th>
-																		<th><?php echo Yii::t('adminModule.Dynamics', 'updated_at') ?></th>
-																		<th><?php echo Yii::t('adminModule.Dynamics', 'created_at') ?></th>
-													*/ ?>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'id') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'title') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'content') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'instructions_content') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'answer') ?></th>
 						<th></th>
 					</tr>
 				</thead>
@@ -75,24 +70,11 @@ EOF
 								<span class="lbl"></span>
 							</label>
 						</td>
-						<td>	<?php echo CHtml::link(CHtml::encode($value->id), array('view', 'id'=>$value->id)); ?>
-</td>
-																								
-												<td><?php echo $value->title ?></td>
-												
-												<td><?php echo $value->content ?></td>
-												
-												<td><?php echo $value->instructions_content ?></td>
-												
-												<td><?php echo $value->answer ?></td>
-												
-												<td><?php echo $value->enabled_at ?></td>
-												
-												<td><?php echo $value->updated_at ?></td>
-												
-							<?php /*
-						<td><?php echo $value->created_at ?></td>
-													*/ ?>
+						<td><?php echo CHtml::link(CHtml::encode($value->id), array('view', 'id'=>$value->id)); ?></td>
+						<td><?php echo $value->title ?></td>
+						<td><?php echo $value->content ?></td>
+						<td><?php echo $value->instructions_content ?></td>
+						<td><?php echo $value->answer ?></td>
 						<td class="td-actions">
 							<div class="hidden-phone visible-desktop btn-group">
 								<a href="#" class="btn btn-mini btn-success">
@@ -144,7 +126,8 @@ EOF
 							</div>
 						</td>
 					</tr>
-					<?php endforeach ?>				</tbody>
+					<?php endforeach ?>				
+				</tbody>
 			</table>
 		</div>
 	</div>

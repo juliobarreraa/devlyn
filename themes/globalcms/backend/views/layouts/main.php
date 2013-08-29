@@ -47,7 +47,6 @@
 			};
 ", CClientScript::POS_BEGIN) ?>
 
-		<?php Yii::app()->clientScript->registerScriptFile('//' . Yii::app()->request->serverName . ':4000/socket.io/socket.io.js', CClientScript::POS_HEAD); ?>
 		<?php Yii::app()->clientScript->registerScriptFile('//underscorejs.org/underscore-min.js', CClientScript::POS_END); ?>
 
 	</head>
@@ -58,12 +57,6 @@
 				new_message_count: "' . Yii::t('adminModule.jscript', '{{count}} mensajes') . '",
 			};
 		', CClientScript::POS_BEGIN); ?>
-		<?php Yii::app()->clientScript->registerScript('load_socket_io', "
-			if(typeof io != 'undefined') {
-				var socket = io.connect('//" . Yii::app()->request->serverName . ":4000');
-			}
-"
-, CClientScript::POS_BEGIN); ?>
 
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
@@ -246,6 +239,13 @@
 						<a href="<?php echo CHtml::normalizeUrl(array('default/index')) ?>">
 							<i class="icon-dashboard"></i>
 							<span><?php echo Yii::t('adminModule.general', 'Escritorio'); ?></span>
+						</a>
+					</li>
+
+					<li>
+						<a href="<?php echo CHtml::normalizeUrl(array('dynamics/index')) ?>">
+							<i class="icon-laptop"></i>
+							<span><?php echo Yii::t('adminModule.general', 'Dinámicas'); ?></span>
 						</a>
 					</li>
 

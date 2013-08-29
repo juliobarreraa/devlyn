@@ -74,8 +74,11 @@ class DynamicsController extends Controller
 		if(isset($_POST['Dynamics']))
 		{
 			$model->attributes=$_POST['Dynamics'];
-			if($model->save())
+			if($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
+			} else {
+				var_dump($model->getErrors());
+			}
 		}
 
 		$this->render('create',array(
@@ -118,7 +121,7 @@ class DynamicsController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**

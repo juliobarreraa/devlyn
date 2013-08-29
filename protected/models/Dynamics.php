@@ -37,7 +37,8 @@ class Dynamics extends CActiveRecord
 		return array(
 			array('title, content, instructions_content, answer, created_at', 'required'),
 			array('title', 'length', 'max'=>255),
-			array('enabled_at, updated_at, created_at', 'length', 'max'=>10),
+			array('updated_at, created_at', 'length', 'max'=>10),
+			array('enabled_at', 'date', 'format' => 'dd/MM/yyyy HH:mm:ss'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, title, content, instructions_content, answer, enabled_at, updated_at, created_at', 'safe', 'on'=>'search'),
@@ -140,6 +141,27 @@ class Dynamics extends CActiveRecord
 		return parent::beforeValidate();
 	}
 
+	/**
+	 * This method is invoked after validation ends.
+	 * The default implementation calls {@link onAfterValidate} to raise an event.
+	 * You may override this method to do postprocessing after validation.
+	 * Make sure the parent implementation is invoked so that the event can be raised.
+	 */
+	protected function afterValidate()
+	{
+		//Cambiamos el formato para almacenarlo en base de datos
+		$this->enabled_at = preg_replace("/\//", "-", $this->enabled_at);
+
+		$this->enabled_at = strtotime($this->enabled_at);
+
+		return parent::afterValidate();
+	}
+
+	/**
+	 * Devuelve la dinámica de un día en partícular, por defecto la de hoy
+	 * @param  string $date
+	 * @return Dynamics
+	 */
 	public function getDynamic($date = "now") {
 		$criteria = new CDbCriteria;
 		$dynamic = null;
