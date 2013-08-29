@@ -24,6 +24,8 @@ $this->menu=array(
 			<h2><i class="halflings-icon user"></i><span class="break"></span>
 				<?php echo Yii::t( 'adminModule.dynamics', 'Dynamics: <b><a href="{{link}}">{{name}}</a></b>', array( '{{name}}' => $model->title,'{{link}}'=>
 				CHtml::normalizeUrl(array('/admin/dynamics/view','id'=>$model->id)) ) ) ?></h2>
+
+				<?php echo CHtml::link(Yii::t('dynamics', 'Añadir ayuda a la respuesta'), array('articles/create')) ?>
 			<div class="box-icon">
 				<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
 			</div>

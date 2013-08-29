@@ -57,10 +57,10 @@ class Resources extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
-			'name' => 'Name',
-			'updated_at' => 'Updated At',
-			'created_at' => 'Created At',
+			'id' => Yii::t('resources','ID'),
+			'name' => Yii::t('resources','Nombre'),
+			'updated_at' => Yii::t('resources','Actualizado el'),
+			'created_at' => Yii::t('resources','Creado el'),
 		);
 	}
 

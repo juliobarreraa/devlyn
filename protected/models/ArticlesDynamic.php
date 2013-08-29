@@ -61,11 +61,11 @@ class ArticlesDynamic extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'dynamic_id' => 'Dynamic',
-			'title' => 'Title',
-			'content' => 'Content',
-			'updated_at' => 'Updated At',
-			'created_at' => 'Created At',
+			'dynamic_id' => Yii::t('articles','Dinámica'),
+			'title' => Yii::t('articles','Título'),
+			'content' => Yii::t('articles','Contenido'),
+			'updated_at' => Yii::t('articles','Actulaizado el'),
+			'created_at' => Yii::t('articles','Creado el'),
 		);
 	}
 

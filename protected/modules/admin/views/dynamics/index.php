@@ -42,7 +42,7 @@ EOF
 	<!--PAGE CONTENT BEGINS HERE-->
 	<div class="row-fluid">
 		<div class="span12">
-			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModule.Dynamics', 'Dynamics') ?></h3>
+			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModule.Dynamics', 'Dinámicas') ?></h3>
 			<?php echo CHtml::link(Yii::t('dynamics', 'Crear'), array('dynamics/create')) ?>
 			<table id="table_report" class="table table-striped table-bordered table-hover">
 				<thead>
@@ -53,11 +53,11 @@ EOF
 								<span class="lbl"></span>
 							</label>
 						</th>
-						<th><?php echo Yii::t('adminModule.Dynamics', 'id') ?></th>
-						<th><?php echo Yii::t('adminModule.Dynamics', 'title') ?></th>
-						<th><?php echo Yii::t('adminModule.Dynamics', 'content') ?></th>
-						<th><?php echo Yii::t('adminModule.Dynamics', 'instructions_content') ?></th>
-						<th><?php echo Yii::t('adminModule.Dynamics', 'answer') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'ID') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'Título') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'Contenido') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'Instrucciones') ?></th>
+						<th><?php echo Yii::t('adminModule.Dynamics', 'Respuesta') ?></th>
 						<th></th>
 					</tr>
 				</thead>
