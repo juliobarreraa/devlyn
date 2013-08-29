@@ -250,13 +250,6 @@
 					</li>
 
 					<li>
-						<a href="<?php echo CHtml::normalizeUrl(array('forums/index')) ?>">
-							<i class="icon-stackexchange"></i>
-							<span><?php echo Yii::t('adminModule.general', 'Foros'); ?></span>
-						</a>
-					</li>
-
-					<li>
 						<a href="<?php echo CHtml::normalizeUrl(array('language/index')) ?>">
 							<i class="icon-cny"></i>
 							<span><?php echo Yii::t('adminModule.general', 'Idiomas'); ?></span>
