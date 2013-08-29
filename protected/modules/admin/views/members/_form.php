@@ -25,78 +25,12 @@
 	</div>
 
 	<div class="control-group">
-		<?php echo $form->labelEx($model,'lastname', array('class' => 'control-label')); ?>
-
-		<div class="controls">
-			<?php echo $form->textField($model,'lastname',array('size'=>60,'maxlength'=>100)); ?>
-			<?php if ($model->hasErrors('lastname')): ?>
-				<small class="text-error"><?php echo $model->getError('lastname'); ?></small>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group">
 		<?php echo $form->labelEx($model,'username', array('class' => 'control-label')); ?>
 
 		<div class="controls">
 			<?php echo $form->textField($model,'username',array('size'=>50,'maxlength'=>50)); ?>
 			<?php if ($model->hasErrors('username')): ?>
 				<small class="text-error"><?php echo $model->getError('username'); ?></small>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<?php echo $form->labelEx($model,'date_birth', array('class' => 'control-label')); ?>
-
-		<div class="controls">
-			<?php echo $form->textField($model,'date_birth',array('size'=>10,'maxlength'=>10)); ?>
-			<?php if ($model->hasErrors('date_birth')): ?>
-				<small class="text-error"><?php echo $model->getError('date_birth'); ?></small>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<?php echo $form->labelEx($model,'nationality', array('class' => 'control-label')); ?>
-
-		<div class="controls">
-			<?php echo $form->textField($model,'nationality'); ?>
-			<?php if ($model->hasErrors('nationality')): ?>
-				<small class="text-error"><?php echo $model->getError('nationality'); ?></small>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<?php echo $form->labelEx($model,'nationality_other', array('class' => 'control-label')); ?>
-
-		<div class="controls">
-			<?php echo $form->textField($model,'nationality_other',array('size'=>60,'maxlength'=>100)); ?>
-			<?php if ($model->hasErrors('nationality_other')): ?>
-				<small class="text-error"><?php echo $model->getError('nationality_other'); ?></small>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<?php echo $form->labelEx($model,'sex', array('class' => 'control-label')); ?>
-
-		<div class="controls">
-			<?php echo $form->textField($model,'sex'); ?>
-			<?php if ($model->hasErrors('sex')): ?>
-				<small class="text-error"><?php echo $model->getError('sex'); ?></small>
-			<?php endif ?>
-		</div>
-	</div>
-
-	<div class="control-group">
-		<?php echo $form->labelEx($model,'language', array('class' => 'control-label')); ?>
-
-		<div class="controls">
-			<?php echo $form->textField($model,'language'); ?>
-			<?php if ($model->hasErrors('language')): ?>
-				<small class="text-error"><?php echo $model->getError('language'); ?></small>
 			<?php endif ?>
 		</div>
 	</div>
@@ -113,11 +47,55 @@
 	</div>
 
 	<div class="control-group">
+		<?php echo $form->labelEx($model->getMemberProfile(),'department', array('class' => 'control-label')); ?>
+
+		<div class="controls">
+			<?php echo $form->textField($model->getMemberProfile(),'department',array('size'=>60,'maxlength'=>100)); ?>
+			<?php if ($model->getMemberProfile()->hasErrors('department')): ?>
+				<small class="text-error"><?php echo $model->getMemberProfile()->getError('department'); ?></small>
+			<?php endif ?>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<?php echo $form->labelEx($model->getMemberProfile(),'region', array('class' => 'control-label')); ?>
+
+		<div class="controls">
+			<?php echo $form->textField($model->getMemberProfile(),'region',array('size'=>60,'maxlength'=>100)); ?>
+			<?php if ($model->getMemberProfile()->hasErrors('region')): ?>
+				<small class="text-error"><?php echo $model->getMemberProfile()->getError('region'); ?></small>
+			<?php endif ?>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<?php echo $form->labelEx($model->getMemberProfile(),'team', array('class' => 'control-label')); ?>
+
+		<div class="controls">
+			<?php echo $form->textField($model->getMemberProfile(),'team',array('size'=>60,'maxlength'=>100)); ?>
+			<?php if ($model->getMemberProfile()->hasErrors('team')): ?>
+				<small class="text-error"><?php echo $model->getMemberProfile()->getError('team'); ?></small>
+			<?php endif ?>
+		</div>
+	</div>
+
+	<div class="control-group">
+		<?php echo $form->labelEx($model->getMemberProfile(),'leader', array('class' => 'control-label')); ?>
+
+		<div class="controls">
+			<?php echo $form->textField($model->getMemberProfile(),'leader',array('size'=>60,'maxlength'=>100)); ?>
+			<?php if ($model->getMemberProfile()->hasErrors('leader')): ?>
+				<small class="text-error"><?php echo $model->getMemberProfile()->getError('leader'); ?></small>
+			<?php endif ?>
+		</div>
+	</div>
+<!-- 
+	<div class="control-group">
 		<?php $this->widget('ext.wysiwyg.wysiwyg', array('title' => $model->getAttributeLabel('signature'), 'textarea' => $form->textarea($model,'signature', array('class' => 'span12', 'data-provide' => 'markdown', 'rows' => 3)))); ?>
 		<?php if ($model->hasErrors('signature')): ?>
 			<small class="text-error"><?php echo $model->getError('signature'); ?></small>
 		<?php endif ?>
-	</div>
+	</div> -->
 	<div class="form-actions">
 		<button class="btn btn-info" type="submit">
 			<i class="icon-ok bigger-110"></i>

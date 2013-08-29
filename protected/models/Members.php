@@ -107,6 +107,8 @@ class Members extends CActiveRecord
 	const NATIONALITY_MEXICAN = 0;
 	const NATIONALITY_FOREIGN = 1;
 
+	private $_memberProfile;
+
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -176,7 +178,7 @@ class Members extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'gcmsAuthItems' => array(self::MANY_MANY, 'AuthItem', '{{auth_assignment}}(userid, itemname)'),
-			'memberProfile' => array(self::HAS_MANY, 'MemberProfile', 'member_id'),
+			'memberProfile' => array(self::HAS_ONE, 'MemberProfile', 'member_id'),
 		);
 	}
 
@@ -735,5 +737,14 @@ class Members extends CActiveRecord
 		}
 
 		return true;
+	}
+
+	public function getMemberProfile() {
+
+		if (!$this->_memberProfile){
+			$this->_memberProfile = new MemberProfile();
+		}
+
+		return $this->_memberProfile;
 	}
 }
