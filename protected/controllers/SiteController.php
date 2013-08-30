@@ -63,6 +63,22 @@ class SiteController extends Controller
 	}
 
 	/**
+	 * Muestra el conjunto de instrucciones
+	 * @return String
+	 */
+	public function actionInstructions() {
+		$model = Dynamics::model()->getDynamic("now");
+
+		$this->render('instructions', array('model' => $model));
+	}
+
+	public function actionGallery() {
+		$model = Dynamics::model()->getDynamic("now");
+
+		$this->render('gallery', array('model' => $model));
+	}
+
+	/**
 	 * This is the action to handle external exceptions.
 	 */
 	public function actionError()
@@ -100,6 +116,17 @@ class SiteController extends Controller
 			}
 		}
 		$this->render('contact',array('model'=>$model));
+	}
+
+
+	/**
+	 * Listado de artículos de dinámica
+	 * @return String
+	 */
+	public function actionGuide() {
+		$model = Dynamics::model()->getDynamic("now");
+
+		$this->render('answer_guide', array('model' => $model));
 	}
 
 	/**

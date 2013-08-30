@@ -9995,4 +9995,27 @@ th.fc-widget-header {
 #iframe-resources {
   border: 0px;
   width: 100%;
+  height: 250px;
+}
+
+@media screen and (max-height: 250px) {
+  #iframe-resources {
+  }
+
+  #resources-form {
+    position: relative;
+  }
+
+  .form-actions {
+    background: transparent;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+  }
+
+  #page-content {
+    min-height: 100%;
+  }
 }

@@ -126,7 +126,7 @@ class ArticlesDynamic extends CActiveRecord
 		}
 		else
 		{
-			$this->created_at = strtotime($this->created_at);
+			$this->updated_at = time();
 		}
 
 		return parent::beforeValidate();

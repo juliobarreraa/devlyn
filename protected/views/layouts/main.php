@@ -50,10 +50,10 @@ EOF
       <nav class="inner-page" id="header-nav">
         <?php if (!Yii::app()->user->isGuest): ?>
         <ul>
-          <li><a href="#" class="active"><?php echo Yii::t('general', 'Home'); ?></a></li>
-          <li><a href="#"><?php echo Yii::t('general', 'Instrucciones'); ?></a></li>
-          <li><a href="#"><?php echo Yii::t('general', 'Galería'); ?></a></li>
-          <li><a href="#"><?php echo Yii::t('general', 'Ingresar respuesta'); ?></a></li>
+          <li><a href="<?php echo CHtml::normalizeUrl(array('site/index')) ?>" class="active"><?php echo Yii::t('general', 'Home'); ?></a></li>
+          <li><a href="<?php echo CHtml::normalizeUrl(array('site/instructions')) ?>"><?php echo Yii::t('general', 'Instrucciones'); ?></a></li>
+          <li><a href="<?php echo CHtml::normalizeUrl(array('site/gallery')) ?>"><?php echo Yii::t('general', 'Galería'); ?></a></li>
+          <li><a href="<?php echo CHtml::normalizeUrl(array('site/guide')) ?>"><?php echo Yii::t('general', 'Ingresar respuesta'); ?></a></li>
           <li><a href="<?php echo CHtml::normalizeUrl(array("site/logout")) ?>"><?php echo Yii::t('general', 'Cerrar sesión'); ?></a></li>
         </ul>
         <?php else: ?>

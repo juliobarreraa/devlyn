@@ -129,5 +129,4 @@ class GalleriesDynamic extends CActiveRecord
 
 		return parent::beforeValidate();
 	}
-
 }

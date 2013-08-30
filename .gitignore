@@ -16,3 +16,4 @@ protected/messages/*
 !protected/messages/config.php
 protected/modules/admin/messages/*
 !protected/modules/admin/messages/config.php
+/uploads/resources/

@@ -86,7 +86,7 @@ class GalleriesController extends Controller
 		}
 
 		$this->render('create',array(
-			'model'=>$model,
+			'model'=>$model
 		));
 	}
 

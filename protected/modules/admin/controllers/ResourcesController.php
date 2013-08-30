@@ -64,7 +64,7 @@ class ResourcesController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate($iframe = false, $gid = null)
+	public function actionCreate($iframe = false, $gid = null, $did = null)
 	{
 		if ($iframe) {
 			$this->iframe = true;
@@ -78,8 +78,26 @@ class ResourcesController extends Controller
 		if(isset($_POST['Resources']))
 		{
 			$model->attributes=$_POST['Resources'];
-			if($model->save())
+			if($model->save()) {
+				// $model->id corresponde al identificador del recurso
+				if ($gid == 0 && intval($did)) {
+					//Averigiar si la dinámica existe
+					if (($dynamic = Dynamics::model()->findByPk($did))) {
+						$gallery = new GalleriesDynamic();
+						$gallery->setAttributes(array(
+							'dynamic_id' => $dynamic->id,
+							'resource_id' => $model->id
+						));
+
+						$gallery->save();
+
+						Yii::app()->user->setFlash('success', Yii::t('resources', 'Se guardo la galería con éxito'));
+						$this->redirect(array('create', 'iframe' => true, 'gid' => 0, 'did' => $dynamic->id));
+					}
+				}
+
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(

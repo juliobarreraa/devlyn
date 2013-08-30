@@ -11,6 +11,9 @@ $this->menu=array(
 	array('label'=>Yii::t('dyna', 'Listado de dinámicas'), 'url'=>array('index'),'thumb' => '_list'),
 );
 ?>
+
+<?php echo CHtml::link(Yii::t('dynamics', 'Subir recurso'), array('resources/create')) ?>
+
 <!--start row-fluid sortable -->
 <div class="row-fluid sortable">
 	<div class="box span12">
