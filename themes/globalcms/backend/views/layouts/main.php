@@ -329,6 +329,15 @@
 					<?php elseif(Yii::app()->user->hasFlash('success')): ?>
 						<div class="alert alert-success"><?php echo Yii::app()->user->getFlash('success') ?></div>
 					<?php endif ?>
+					<?php
+						$this->beginWidget('zii.widgets.CPortlet', array(
+						));
+						$this->widget('ext.Toolbar', array(
+							'items'=>$this->menu,
+							'htmlOptions'=>array('class'=>'operations'),
+						));
+						$this->endWidget();
+					?>
 					<?php echo $content ?>
 				</div><!--/#page-content-->
 
