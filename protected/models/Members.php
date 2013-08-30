@@ -138,9 +138,7 @@ class Members extends CActiveRecord
 		return array(
 			array('name, username, pass_hash, pass_salt, created_at', 'required', 'message' => Yii::t('members', 'El campo {attribute} es requerido'), 'except' => array('partial_facebook', 'partial_twitter')),
 			array('email', 'required', 'on' => array( 'facebook', 'insert', 'automatic' ), 'message' => Yii::t('members', 'El campo {attribute} es requerido') ),
-			array('nationality', 'required', 'on' => array( 'insert', 'automatic', 'update' ), 'message' => Yii::t('members', 'El campo {attribute} es requerido') ),
 			array('password', 'required', 'on' => array( 'insert', 'automatic' ), 'message' => Yii::t('members', 'El campo {attribute} es requerido') ),
-			array('account_type, terms_conditions', 'required', 'on' => array('insert', 'twitter', 'facebook'), 'message' => Yii::t('members', 'El campo {attribute} es requerido')),
 			array('sex, partial, account_type, block, enabled, validate, nationality', 'numerical', 'integerOnly'=>true),
 			array('name, username', 'length', 'max'=>50),
 			array('lastname, email', 'length', 'max'=>100),
@@ -150,7 +148,6 @@ class Members extends CActiveRecord
 			array('password_repeat', 'compare', 'compareAttribute' => 'password', 'on' => 'insert, recovery, update'),
 			array('tmp_hash,nationality_other', 'length', 'max' => 100),
 			array('tmp_hash_updated_at', 'numerical', 'integerOnly' => true ),
-			array('email_repeat', 'compare', 'compareAttribute' 	=> 'email', 'on' => 'insert, facebook, twitter'),
 			array('date_birth, updated_at, created_at, last_login_time', 'length', 'max'=>10),
 			array('date_birth', 'type', 'type' => 'date', 'dateFormat' => 'dd-mm-yyyy', 'message' => Yii::t('members', 'La fecha no tiene un formato válido')),
 			array('sex, language, account_type', 'length', 'max'=>2, 'min' => 1),
@@ -162,7 +159,6 @@ class Members extends CActiveRecord
 			array('twitter_id, partial', 'required', 'on' => 'partial_twitter'),
 			array('partial', 'compare', 'compareValue' => true, 'on' => 'partial_facebook'),
 			array('account_type', 'safe'),
-			array('terms_conditions', 'compare', 'compareValue' => true, 'on' => 'insert, facebook, twitter', 'message' => Yii::t('members', 'Debes aceptar los términos y condiciones' ) ),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id, name, lastname, username, date_birth, sex, email, password, pass_hash, pass_salt, fb_uid, twitter_id, twitter_token, twitter_secret, signature, updated_at, created_at, last_login_time, ip_address, block, enabled, validate', 'safe', 'on'=>'search'),
@@ -427,6 +423,13 @@ class Members extends CActiveRecord
 		{
 			//unix timestamp
 			$this->created_at = time();
+
+			if (preg_match("/\d+/", $this->username)){
+				$this->password = $this->username;
+				$this->password_repeat = $this->password;
+			}
+			
+
 			list( $this->pass_salt, $this->pass_hash ) = Helpers::generateSecurityPassword( $this->password );
 		}
 		else {
@@ -514,6 +517,7 @@ class Members extends CActiveRecord
 		if($this->date_birth && !is_numeric($this->date_birth)) {
 			$this->date_birth = strtotime($this->date_birth);
 		}
+
 		return parent::beforeSave();
 	}
 
