@@ -10,7 +10,7 @@
 		)); ?>
 	<div class="alert alert-info"><?php echo Yii::t('adminModule.galleries dynamic','Los campos con * son necesarios')?></div>
 		<div class="control-group">
-			<?php echo $form->labelEx($model,'resource_id'); ?>
+			<?php echo $form->labelEx($model,'resource_id', array('class' => 'control-label'); ?>
 
 			<div class="controls">
 				<?php echo $form->textField($model,'resource_id'); ?>

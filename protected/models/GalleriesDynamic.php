@@ -61,10 +61,10 @@ class GalleriesDynamic extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'dynamic_id' => 'Dynamic',
-			'resource_id' => 'Resource',
-			'updated_at' => 'Updated At',
-			'created_at' => 'Created At',
+			'dynamic_id' => Yii::t('galleries','Dinámica'),
+			'resource_id' => Yii::t('galleries','Recurso'),
+			'updated_at' => Yii::t('galleries','Actualizado el'),
+			'created_at' => Yii::t('galleries','Creado el'),
 		);
 	}
 

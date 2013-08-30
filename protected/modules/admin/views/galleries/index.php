@@ -43,7 +43,8 @@ EOF
 	<!--PAGE CONTENT BEGINS HERE-->
 	<div class="row-fluid">
 		<div class="span12">
-			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModule.Galleries Dynamic', 'Galleries Dynamic') ?></h3>
+			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModule.Galleries Dynamic', 'Galerías para dinámicas') ?></h3>
+			<?php echo CHtml::link(Yii::t('galleries','Crear nueva'),array('galleries/create')); ?>
 			<table id="table_report" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
@@ -53,11 +54,11 @@ EOF
 								<span class="lbl"></span>
 							</label>
 						</th>
-																								<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'id') ?></th>
-																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'dynamic_id') ?></th>
-																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'resource_id') ?></th>
-																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'updated_at') ?></th>
-																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'created_at') ?></th>
+																								<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'ID') ?></th>
+																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'Dinámica ID') ?></th>
+																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'Recurso ID') ?></th>
+																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'Actualizado el') ?></th>
+																		<th><?php echo Yii::t('adminModule.Galleries Dynamic', 'Creado el') ?></th>
 																		<th></th>
 					</tr>
 				</thead>
