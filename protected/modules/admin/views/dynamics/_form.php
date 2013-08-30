@@ -25,7 +25,7 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstra
 		<div class="control-group">
 			<?php echo $form->labelEx($model,'content', array('class' => 'control-label')); ?>
 			<div class="controls">
-				<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50, 'class' => 'ckeditor')); ?>
+				<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50, 'id' => 'ckeditorBrowserContent')); ?>
 				<?php if ($model->hasErrors('content')): ?>
 					<small class="text-error"><?php echo $form->error($model,'content'); ?></small>
 				<?php endif ?>
@@ -36,22 +36,23 @@ Yii::app()->clientScript->registerScriptFile(Yii::app()->baseUrl . '/js/bootstra
 			<?php echo $form->labelEx($model,'instructions_content', array('class' => 'control-label')); ?>
 
 			<div class="controls">
-				<?php echo $form->textArea($model,'instructions_content',array('rows'=>6, 'cols'=>50, 'class' => 'ckeditor')); ?>
+				<?php echo $form->textArea($model,'instructions_content',array('rows'=>6, 'cols'=>50, 'id' => 'ckeditorBrowserInstructions')); ?>
 
-				<?php if ($model->hasErrors('instructions_content')): ?>					<small class="text-error"><?php echo $form->error($model,'instructions_content'); ?>
-</small>
-				<?php endif ?>			</div>
-
+				<?php if ($model->hasErrors('instructions_content')): ?>
+					<small class="text-error"><?php echo $form->error($model,'instructions_content'); ?></small>
+				<?php endif ?>
+			</div>
 		</div>
-				<div class="control-group">
+		<div class="control-group">
 			<?php echo $form->labelEx($model,'answer', array('class' => 'control-label')); ?>
 
 			<div class="controls">
 				<?php echo $form->textArea($model,'answer',array('rows'=>3, 'cols'=>80)); ?>
 
-				<?php if ($model->hasErrors('answer')): ?>					<small class="text-error"><?php echo $form->error($model,'answer'); ?>
-</small>
-				<?php endif ?>			</div>
+				<?php if ($model->hasErrors('answer')): ?>
+					<small class="text-error"><?php echo $form->error($model,'answer'); ?></small>
+				<?php endif ?>			
+			</div>
 
 		</div>
 

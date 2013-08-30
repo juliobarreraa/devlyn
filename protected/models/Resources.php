@@ -14,6 +14,8 @@
  */
 class Resources extends CActiveRecord
 {
+	private $max_file_size;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -32,6 +34,7 @@ class Resources extends CActiveRecord
 		return array(
 			array('name, created_at', 'required'),
 			array('name', 'length', 'max'=>100),
+			array('name', 'file', 'safe' => true, 'types' => 'jpg, jpeg, bmp, gif, png, swf, doc, docx', 'maxSize' => $this->max_file_size),
 			array('updated_at, created_at', 'length', 'max'=>10),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -122,7 +125,26 @@ class Resources extends CActiveRecord
 			$this->created_at = strtotime($this->created_at);
 		}
 
+
+		$this->name = CUploadedFile::getInstance($this, "name");
+
+		$name_encoded = md5($this->name->name . time()) . '.' . $this->name->extensionName;
+		
+		$this->name->saveAs(Yii::getPathOfAlias('webroot.uploads.resources') . DIRECTORY_SEPARATOR . $name_encoded);
+		$this->name = $name_encoded;
+
 		return parent::beforeValidate();
+	}
+
+	/**
+	 * This method is invoked after validation ends.
+	 * The default implementation calls {@link onAfterValidate} to raise an event.
+	 * You may override this method to do postprocessing after validation.
+	 * Make sure the parent implementation is invoked so that the event can be raised.
+	 */
+	protected function afterValidate()
+	{
+		return parent::afterValidate();
 	}
 
 }

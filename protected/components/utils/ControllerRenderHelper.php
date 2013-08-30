@@ -18,6 +18,13 @@ class ControllerRenderHelper
 	private $loginForm;
 
 	/**
+	 * Permite averiguar el tamaño máximo de un archivo que se sube al servidor
+	 * desde la configuración del .ini
+	 * @var Integer
+	 */
+	private $max_file_size;
+
+	/**
 	 * Funciones globales a todo controlador
 	 */
 	public function __construct() {
@@ -27,6 +34,8 @@ class ControllerRenderHelper
 		 	'jquery.ajaxqueue.js'=>false,
 		 	'jquery.metadata.js'=>false,
 		);
+
+		$this->setIniMaxUploadFileSize(ini_get("upload_max_filesize"));
 	}
 
 	/**
@@ -56,6 +65,22 @@ class ControllerRenderHelper
 			return Yii::app()->createAbsoluteUrl('/');
 
 		return Yii::app()->baseUrl;
+	}
+
+	/**
+	 * Permite configurar el tamaño máximo de subida de archivos
+	 * @param Integer $max_file_size
+	 */
+	public function setIniMaxUploadFileSize($max_file_size) {
+		$this->max_file_size = $max_file_size;
+	}
+
+	/**
+	 * Devuelve el tamaño máximo de subidas por archivo
+	 * @return Integer
+	 */
+	public function getIniMaxUploadFileSize() {
+		return $this->max_file_size;
 	}
 }
  ?>

@@ -1557,3 +1557,4 @@ td.td-actions a.td-action{background:-moz-linear-gradient(center top, #fff, #f7f
 .dropdown-preview{margin:0 5px;display:inline-block}
 .dropdown-preview>.dropdown-menu{display:block;position:static;margin-bottom:5px}
 .eula{max-height:300px;overflow:auto;padding:10px;background:#eeeaaa}
+#iframe-resources{border:0;width:100%}

@@ -28,6 +28,12 @@ class Controller extends CController
 	public $controllerRenderHelper;
 
 	/**
+	 * Verifica si el sitio se encuentra dentro de un componente como iframe.
+	 * @var boolean
+	 */
+	public $iframe = false;
+
+	/**
 	 * This method is invoked right before an action is to be executed (after all possible filters.)
 	 * You may override this method to do last-minute preparation for the action.
 	 * @param CAction $action the action to be executed.

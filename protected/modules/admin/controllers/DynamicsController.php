@@ -76,8 +76,6 @@ class DynamicsController extends Controller
 			$model->attributes=$_POST['Dynamics'];
 			if($model->save()) {
 				$this->redirect(array('view','id'=>$model->id));
-			} else {
-				var_dump($model->getErrors());
 			}
 		}
 

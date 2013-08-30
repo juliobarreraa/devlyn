@@ -58,6 +58,7 @@
 			};
 		', CClientScript::POS_BEGIN); ?>
 
+		<?php if (!$this->iframe): ?>
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
 				<div class="container-fluid">
@@ -197,12 +198,16 @@
 				</div><!--/.container-fluid-->
 			</div><!--/.navbar-inner-->
 		</div>
+		<?php endif ?>
 
 		<div class="container-fluid" id="main-container">
+			<?php if (!$this->iframe): ?>
 			<a id="menu-toggler" href="#">
 				<span></span>
 			</a>
+			<?php endif ?>
 
+			<?php if (!$this->iframe): ?>
 			<div id="sidebar">
 				<div id="sidebar-shortcuts">
 					<div id="sidebar-shortcuts-large">
@@ -234,6 +239,7 @@
 					</div>
 				</div><!--#sidebar-shortcuts-->
 
+				
 				<ul class="nav nav-list">
 					<li>
 						<a href="<?php echo CHtml::normalizeUrl(array('default/index')) ?>">
@@ -294,8 +300,10 @@
 					<i class="icon-double-angle-left"></i>
 				</div>
 			</div>
+			<?php endif ?>
 
-			<div id="main-content" class="clearfix">
+			<div id="main-content" class="clearfix" style="<?php if ($this->iframe): ?>margin-left: 0px;<?php endif ?>">
+				<?php if (!$this->iframe): ?>
 				<div id="breadcrumbs">
 					<?php if(isset($this->breadcrumbs)):?>
 						<?php $this->widget('GCBreadcrumbs', array(
@@ -313,6 +321,7 @@
 						</form>
 					</div><!--#nav-search-->
 				</div>
+				<?php endif ?>
 
 				<div id="page-content" class="clearfix">
 					<?php if (Yii::app()->user->hasFlash('error')): ?>
