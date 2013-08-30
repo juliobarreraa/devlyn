@@ -1558,8 +1558,8 @@ td.td-actions a.td-action{background:-moz-linear-gradient(center top, #fff, #f7f
 .dropdown-preview>.dropdown-menu{display:block;position:static;margin-bottom:5px}
 .eula{max-height:300px;overflow:auto;padding:10px;background:#eeeaaa}
 #iframe-resources{border:0;width:100%;height:250px}
-@media screen and (max-height:250px){#resources-form{position:relative} .form-actions{background:transparent;padding:0;margin:0;position:absolute;right:0;bottom:0} #page-content{min-height:100%}}.operations{list-style-type:none;margin:0;padding:0}
-.operations li{padding-bottom:2px}
-.operations li a{font:bold 12px Arial;color:#0066a4;display:block;padding:2px 0 2px 8px;line-height:15px;text-decoration:none}
-.operations li a:visited{color:#0066a4}
-.operations li a:hover{background:#80cfff}
+@media screen and (max-height:250px){#resources-form{position:relative} .form-actions{background:transparent;padding:0;margin:0;position:absolute;right:0;bottom:0} #page-content{min-height:100%}}#content{clear:both;margin-top:30px}
+.operations{list-style-type:none;margin:0;padding:0;float:right}
+.operations li{float:left;padding-bottom:2px}
+.operations li a{font:bold 12px Arial;color:#0066a4;display:block;padding:2px 0 2px 8px;line-height:30px;text-decoration:none;font-size:20px}
+.operations li a:hover{color:#000}
