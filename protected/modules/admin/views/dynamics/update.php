@@ -12,7 +12,6 @@ $this->menu=array(
 	array('label'=>'List Dynamics', 'url'=>array('index'), 'thumb' => '_list'),
 	array('label'=>'Create Dynamics', 'url'=>array('create'), 'thumb' => '_create'),
 	array('label'=>'View Dynamics', 'url'=>array('view', 'id'=>$model->id), 'thumb' => '_view'),
-	array('label'=>'Manage Dynamics', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 <!--start row-fluid sortable -->

@@ -12,7 +12,6 @@ $this->menu=array(
 	array('label'=>'List ArticlesDynamic', 'url'=>array('index'), 'thumb' => '_list'),
 	array('label'=>'Create ArticlesDynamic', 'url'=>array('create'), 'thumb' => '_create'),
 	array('label'=>'View ArticlesDynamic', 'url'=>array('view', 'id'=>$model->id), 'thumb' => '_view'),
-	array('label'=>'Manage ArticlesDynamic', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 <!--start row-fluid sortable -->

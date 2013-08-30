@@ -9,7 +9,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List ArticlesDynamic', 'url'=>array('index'),'thumb' => '_list'),
-	array('label'=>'Manage ArticlesDynamic', 'url'=>array('admin'),'thumb' => '_manage'),
 );
 ?>
 <!--start row-fluid sortable -->

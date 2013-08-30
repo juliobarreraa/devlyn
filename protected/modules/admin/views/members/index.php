@@ -7,8 +7,8 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'Create Members', 'url'=>array('create')),
-	array('label'=>'Manage Members', 'url'=>array('admin')),
+	array('label'=>'Create Members', 'url'=>array('create'), 'thumb' => '_create'),
+
 );
 ?>
 <?php Yii::app()->clientScript->registerScript('table_report', <<<EOF
@@ -44,7 +44,7 @@ EOF
 	<div class="row-fluid">
 		<div class="span12">
 			<h3 class="header smaller lighter blue"><?php echo Yii::t('adminModules.members', 'Usuarios') ?></h3>
-				
+				<?php echo CHtml::link(Yii::t('articles', 'Crear Usuario'), array('members/create')) ?>
 			<table id="table_report" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>

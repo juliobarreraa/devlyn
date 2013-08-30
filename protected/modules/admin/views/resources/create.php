@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Resources', 'url'=>array('index'),'thumb' => '_list'),
-	array('label'=>'Manage Resources', 'url'=>array('admin'),'thumb' => '_manage'),
+
 );
 ?>
 <!--start row-fluid sortable -->

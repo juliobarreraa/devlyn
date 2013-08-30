@@ -12,7 +12,6 @@ $this->menu=array(
 	array('label'=>'Create GalleriesDynamic', 'url'=>array('create'), 'thumb' => '_create'),
 	array('label'=>'Update GalleriesDynamic', 'url'=>array('update', 'id'=>$model->id), 'thumb' => '_update'),
 	array('label'=>'Delete GalleriesDynamic', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'), 'thumb' => '_delete'),
-	array('label'=>'Manage GalleriesDynamic', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 <!-- start row-fluid sortable -->

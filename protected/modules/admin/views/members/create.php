@@ -8,8 +8,7 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Members', 'url'=>array('index')),
-	array('label'=>'Manage Members', 'url'=>array('admin')),
+	array('label'=>'List Members', 'url'=>array('index'), 'thumb' => '_list'),
 );
 ?>
 

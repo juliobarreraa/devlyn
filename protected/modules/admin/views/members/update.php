@@ -9,10 +9,12 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Members', 'url'=>array('index')),
-	array('label'=>'Create Members', 'url'=>array('create')),
-	array('label'=>'View Members', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Members', 'url'=>array('admin')),
+	array('label'=>'List Members', 'url'=>array('index'), 'thumb' => '_list'),
+	array('label'=>'Create Members', 'url'=>array('create'), 'thumb' => '_create'),
+	array('label'=>'Update Members', 'url'=>array('update', 'id'=>$model->id), 'thumb' => '_update'),
+	array('label'=>'elete Members', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'), 'thumb' => '_delete'),
+
+
 );
 ?>
 

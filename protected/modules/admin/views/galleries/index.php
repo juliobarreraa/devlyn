@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Create GalleriesDynamic', 'url'=>array('create'),'thumb' => '_create'),
-	array('label'=>'Manage GalleriesDynamic', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 

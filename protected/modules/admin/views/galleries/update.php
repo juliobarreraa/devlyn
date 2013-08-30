@@ -12,7 +12,6 @@ $this->menu=array(
 	array('label'=>'List GalleriesDynamic', 'url'=>array('index'), 'thumb' => '_list'),
 	array('label'=>'Create GalleriesDynamic', 'url'=>array('create'), 'thumb' => '_create'),
 	array('label'=>'View GalleriesDynamic', 'url'=>array('view', 'id'=>$model->id), 'thumb' => '_view'),
-	array('label'=>'Manage GalleriesDynamic', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 <!--start row-fluid sortable -->

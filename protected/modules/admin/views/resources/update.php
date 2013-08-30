@@ -12,7 +12,6 @@ $this->menu=array(
 	array('label'=>'List Resources', 'url'=>array('index'), 'thumb' => '_list'),
 	array('label'=>'Create Resources', 'url'=>array('create'), 'thumb' => '_create'),
 	array('label'=>'View Resources', 'url'=>array('view', 'id'=>$model->id), 'thumb' => '_view'),
-	array('label'=>'Manage Resources', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 <!--start row-fluid sortable -->

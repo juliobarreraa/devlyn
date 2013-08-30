@@ -12,7 +12,6 @@ $this->menu=array(
 	array('label'=>'Create Dynamics', 'url'=>array('create'), 'thumb' => '_create'),
 	array('label'=>'Update Dynamics', 'url'=>array('update', 'id'=>$model->id), 'thumb' => '_update'),
 	array('label'=>'Delete Dynamics', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?'), 'thumb' => '_delete'),
-	array('label'=>'Manage Dynamics', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 <!-- start row-fluid sortable -->
@@ -26,6 +25,9 @@ $this->menu=array(
 				CHtml::normalizeUrl(array('/admin/dynamics/view','id'=>$model->id)) ) ) ?></h2>
 
 				<?php echo CHtml::link(Yii::t('dynamics', 'Añadir ayuda a la respuesta'), array('articles/create')) ?>
+
+				<?php echo CHtml::link(Yii::t('dynamics', 'Modificar la dinamica'), array('articles/update')) ?>
+
 			<div class="box-icon">
 				<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
 			</div>

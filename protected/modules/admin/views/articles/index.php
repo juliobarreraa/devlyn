@@ -8,7 +8,6 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'Create ArticlesDynamic', 'url'=>array('create'),'thumb' => '_create'),
-	array('label'=>'Manage ArticlesDynamic', 'url'=>array('admin'), 'thumb' => '_manage'),
 );
 ?>
 
