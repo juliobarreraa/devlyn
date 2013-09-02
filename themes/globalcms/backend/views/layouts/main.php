@@ -256,6 +256,13 @@
 					</li>
 
 					<li>
+						<a href="<?php echo CHtml::normalizeUrl(array('dinamicsmembers/index')) ?>">
+							<i class="icon-laptop"></i>
+							<span><?php echo Yii::t('adminModule.general', 'Respuestas a dinámicas'); ?></span>
+						</a>
+					</li>
+
+					<li>
 						<a href="<?php echo CHtml::normalizeUrl(array('language/index')) ?>">
 							<i class="icon-cny"></i>
 							<span><?php echo Yii::t('adminModule.general', 'Idiomas'); ?></span>

@@ -56,11 +56,11 @@ class DynamicsMembers extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'member_id' => 'Member',
-			'dynamic_id' => 'Dynamic',
-			'answer' => Yii::t('answers', 'Respuesta'),
-			'updated_at' => 'Updated At',
-			'created_at' => 'Created At',
+			'member_id' => Yii::t('dynamics_members','Miembro'),
+			'dynamic_id' => Yii::t('dynamics_members','Dinámica'),
+			'answer' => Yii::t('dynamics_members','Respuesta'),
+			'updated_at' => Yii::t('dynamics_members','Actualizado el'),
+			'created_at' => Yii::t('dynamics_members','Creado el'),
 		);
 	}
 
