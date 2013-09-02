@@ -89,13 +89,6 @@
 			<?php endif ?>
 		</div>
 	</div>
-<!-- 
-	<div class="control-group">
-		<?php $this->widget('ext.wysiwyg.wysiwyg', array('title' => $model->getAttributeLabel('signature'), 'textarea' => $form->textarea($model,'signature', array('class' => 'span12', 'data-provide' => 'markdown', 'rows' => 3)))); ?>
-		<?php if ($model->hasErrors('signature')): ?>
-			<small class="text-error"><?php echo $model->getError('signature'); ?></small>
-		<?php endif ?>
-	</div> -->
 	<div class="form-actions">
 		<button class="btn btn-info" type="submit">
 			<i class="icon-ok bigger-110"></i>
