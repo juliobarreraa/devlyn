@@ -124,9 +124,28 @@ class SiteController extends Controller
 	 * @return String
 	 */
 	public function actionGuide() {
-		$model = Dynamics::model()->getDynamic("now");
 
-		$this->render('answer_guide', array('model' => $model));
+		if(!$model = Dynamics::model()->getDynamic("now")) {
+			$this->redirect('index');
+		}
+
+		$dynamics = new DynamicsMembers;
+
+		if(isset($_POST['DynamicsMembers']))
+		{
+			$dynamics->attributes=$_POST['DynamicsMembers'];
+
+			$dynamics->member_id = Yii::app()->user->id;
+			$dynamics->dynamic_id = $model->id;
+
+			if($dynamics->save())
+			{
+				Yii::app()->user->setFlash('success', Yii::t('answers', 'Gracias por enviar tu respuesta'));
+				$this->redirect('index', array('model' => $model));
+			}
+		}
+
+		$this->render('answer_guide', array('model' => $model, 'dynamics' => $dynamics));
 	}
 
 	/**
